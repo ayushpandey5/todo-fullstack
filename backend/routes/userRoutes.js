@@ -3,6 +3,7 @@ const userMiddleware = require("../middleware/userMiddleware.js");
 const router = Router();
 const { User } = require("../db/db.js");
 const jwt = require("jsonwebtoken");
+const constants = require("../utils/constants.js")
 
 router.post("/signup", async (req,res) => {
     const username = req.body.username
@@ -33,7 +34,7 @@ router.post("/login", async (req,res) => {
             password: password
         })
         if(user){
-          const token = jwt.sign({ username }, JWT_SECRET);
+          const token = jwt.sign({ username }, constants.JWT_SECRET);
           admin.token = token;
           await admin.save();
           res.status(201).json({ token: token });

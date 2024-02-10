@@ -36,8 +36,8 @@ mongoose.connect(
     }
   })
 
-  const User = mongoose.model("User", "UserSchema")
-  const Todo = mongoose.model("Todo", "TodoSchema")
+  const User = mongoose.model("User", UserSchema);
+  const Todo = mongoose.model("Todo", TodoSchema);
 
   module.exports = {User, Todo}
 
