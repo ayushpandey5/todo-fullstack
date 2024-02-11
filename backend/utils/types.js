@@ -17,5 +17,6 @@ const createUser = zod.object({
 
 module.exports = {
     createTodo: createTodo,
-    updateTodo: updateTodo
+    updateTodo: updateTodo,
+    createUser: createUser
 }

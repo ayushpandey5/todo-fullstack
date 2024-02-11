@@ -12,13 +12,13 @@ router.post("/todo", async(req,res) => {
     }
     const todo = new Todo(parsedPayload.data);
     await todo.save();
-    return res.status(200).json({success : `${parsedPayload}`})
+    return res.status(200).json({success : "Todo created Successfully"})
 
 })
 
 router.get("/todos", async(req, res) => {
-    const todos = await Todo.find({})
-    return res.status(200).json({ data: todos})
+    const todos = await Todo.find({  })
+    return res.status(200).json({ success: 200 ,data: todos})
 })
 
 router.put("/completed", async (req, res) =>{

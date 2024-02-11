@@ -20,11 +20,11 @@ mongoose.connect(
   })
 
   const TodoSchema = new mongoose.Schema({
-    todoTitle: {
+    title: {
         type: String,
         required: true,
     },
-    todoDescription: {
+    description: {
         type: String,
     },
     isComplete: {

@@ -8,8 +8,8 @@ const userRouter = require("./routes/userRoutes.js")
 app.use(cors())
 app.use(express.json())
 
-app.use("/user", userRouter);
-app.use("todo", todoRouter);
+app.use(userRouter);
+app.use(todoRouter);
 
 app.listen(constants.PORT, () => {
     console.log(`Server's Listening in port ${constants.PORT}`)

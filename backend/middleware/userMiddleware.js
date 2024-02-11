@@ -6,6 +6,7 @@ function userMiddleware(req, res, next) {
     try {
         const decodedToken = jsonwebtoken.verify(token, constants.JWT_SECRET)
         if(decodedToken.username){
+            req.decodedToken = decodedToken;
             next()
         }else{
             return res.status(403).json({error: "Not Authenticated"})
@@ -15,3 +16,5 @@ function userMiddleware(req, res, next) {
         return res.status(500).json({error: error})
     }
 }
+
+module.exports = {userMiddleware};
