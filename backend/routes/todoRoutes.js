@@ -13,7 +13,6 @@ router.post("/todo", async(req,res) => {
     const todo = new Todo(parsedPayload.data);
     await todo.save();
     return res.status(200).json({success : "Todo created Successfully"})
-
 })
 
 router.get("/todos", async(req, res) => {
@@ -30,6 +29,18 @@ router.put("/completed", async (req, res) =>{
     const todo = await Todo.updateOne({ _id: parsedPayload.data.id}, {
         isComplete: true
     })
+    return res.status(200).json({data: todo})
+})
+
+router.delete("/todo", async (req, res) => {
+    const id = req.body.id
+    try {
+        await Todo.findOneAndDelete({ _id: id })
+    } catch (error) {
+        return res.status(500).json({error: error})
+    }
+    return res.status(200).json({success: "Todo deleted"})
+
 })
 
 module.exports = router;
